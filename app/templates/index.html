@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Mini Link turns long URLs into short, easy-to-share links."
+    />
+    <title>Mini Link - URL Shortener</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}" />
+    <script src="{{ url_for('static', path='/app.js') }}" defer></script>
+  </head>
+
+  <body>
+    <main class="container page-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">SMALLER URLS · EASIER SHARING</p>
+        <h1 id="page-title">A mini link for your long URL.</h1>
+        <p class="hero-copy">
+          Paste a link below and Mini Link will make it compact, memorable, and
+          ready to share.
+        </p>
+      </section>
+
+      <article class="shortener-card">
+        <form id="shorten-form" novalidate>
+          <label for="url-input">Your long URL</label>
+
+          <div class="form-row">
+            <input
+              id="url-input"
+              name="url"
+              type="url"
+              inputmode="url"
+              autocomplete="url"
+              placeholder="https://example.com/a/really/long/link"
+              aria-describedby="url-help form-error"
+              required
+            />
+            <button id="submit-button" type="submit">
+              <span>Create mini link</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <small id="url-help">
+            Enter a complete URL beginning with http:// or https://.
+          </small>
+
+          <p
+            id="form-error"
+            class="form-message error-message"
+            role="alert"
+            hidden
+          ></p>
+        </form>
+
+        <section
+          id="result-panel"
+          class="result-panel"
+          aria-live="polite"
+          aria-labelledby="result-title"
+          hidden
+        >
+          <div>
+            <p id="result-title" class="result-label">Your Mini Link</p>
+            <a
+              id="short-url"
+              class="short-url"
+              href="#"
+              target="_blank"
+              rel="noopener"
+            ></a>
+            <p id="result-meta" class="result-meta"></p>
+          </div>
+
+          <button
+            id="copy-button"
+            class="secondary outline copy-button"
+            type="button"
+          >
+            Copy
+          </button>
+        </section>
+      </article>
+
+      <p class="privacy-note">No account needed. Paste, shorten, and share.</p>
+    </main>
+  </body>
+</html>
